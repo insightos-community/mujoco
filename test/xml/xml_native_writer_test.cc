@@ -1324,6 +1324,10 @@ class XMLWriterLocaleTest : public MujocoTest {
 };
 
 TEST_F(XMLWriterLocaleTest, IgnoresLocale) {
+  // Some libcs retain a decimal point for LC_NUMERIC even in de_DE.
+  // Verify that MuJoCo preserves the caller's actual formatting behavior.
+  char baseline[8];
+  std::snprintf(baseline, sizeof(baseline), "%.4f", 3.9375);
   static constexpr char xml[] = R"(
   <mujoco>
     <worldbody>
@@ -1342,7 +1346,7 @@ TEST_F(XMLWriterLocaleTest, IgnoresLocale) {
   // Test that MuJoCo doesn't override locales for subsequent calls.
   char formatted[8];
   std::snprintf(formatted, sizeof(formatted), "%.4f", 3.9375);
-  EXPECT_EQ(std::string(formatted), "3,9375");
+  EXPECT_EQ(std::string(formatted), std::string(baseline));
 }
 
 TEST_F(XMLWriterTest, NonRGBTextures) {

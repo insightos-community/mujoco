@@ -1,0 +1,10 @@
+{
+  "project": "mujoco",
+  "version": "3.4.0",
+  "upstream": "https://github.com/google-deepmind/mujoco",
+  "upstream_tag": "3.4.0",
+  "upstream_commit": "e55fff5dea6f1d5dd7963ca52eecc41d05ad0922",
+  "libraries": [
+    "libmujoco.so.3.4.0"
+  ]
+}
