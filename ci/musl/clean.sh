@@ -7,7 +7,7 @@ cp /work/runtime/* /opt/runtime/ 2>/dev/null || test -z "$(ls -A /work/runtime)"
 export MUJOCO_GL=disable
 export LD_LIBRARY_PATH=/opt/check/prefix/lib:/opt/runtime
 python /src/ci/musl/smoke.py /opt/check/prefix
-python -m pip install --no-index --no-deps /work/dist/*.whl /work/wheelhouse/*.whl
+python -m pip install --no-index --no-deps /work/dist/mujoco-*.whl /work/wheelhouse/*.whl
 python - <<'PY'
 import mujoco, numpy as np
 m=mujoco.MjModel.from_xml_string('<mujoco><worldbody><body pos="0 0 1"><freejoint/><geom type="sphere" size="0.1"/></body></worldbody></mujoco>')
