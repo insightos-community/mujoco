@@ -22,5 +22,8 @@ cat logs/native-tests.log logs/python-tests.log > logs/tests.log
 cp repaired-wheels/*.whl dist/
 python /src/ci/musl/package.py
 mkdir -p wheelhouse
-python -m pip download --only-binary=:all: --dest wheelhouse numpy==2.3.5 pillow==11.2.1 absl-py 'etils[epath]' glfw PyOpenGL
+python -m pip download --only-binary=:all: --dest wheelhouse numpy==2.3.5 pillow==11.2.1 absl-py 'etils[epath]' PyOpenGL
+python -m pip wheel --no-deps --wheel-dir wheelhouse glfw==2.10.2
+cp wheelhouse/glfw-*.whl dist/
+python /src/ci/musl/package.py
 python -m pip freeze > logs/python-packages.txt
