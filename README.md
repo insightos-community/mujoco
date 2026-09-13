@@ -194,3 +194,7 @@ This is not an officially supported Google product.
 [changelog]: https://mujoco.readthedocs.io/en/latest/changelog.html
 [Python bindings]: https://mujoco.readthedocs.io/en/stable/python.html#python-bindings
 [PyPI]: https://pypi.org/project/mujoco/
+
+## Reproducible platform builds
+
+See [glibc, musl and macOS build instructions](README.build.md) for pinned source revisions, exact scripts, tool requirements, local commands, CI reproduction and platform support boundaries.
